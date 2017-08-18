@@ -12,18 +12,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
-
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var upperTextField: UITextField!
+    @IBOutlet weak var lowerTextField: UITextField!
+    
+    
+    let memeTextAttributes:[String:Any] = [
+        NSStrokeColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName: 5.0]
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        upperTextField.defaultTextAttributes = memeTextAttributes
+        upperTextField.textAlignment = .center
+        lowerTextField.defaultTextAttributes = memeTextAttributes
+        lowerTextField.textAlignment = .center
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     @IBAction func pickAnImage(_ sender: Any) {
@@ -33,19 +46,19 @@ UINavigationControllerDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
 
-    if cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera){
-        @IBAction func pickAnImageFromCamera(_ sender: Any) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            present(imagePicker, animated: true, completion: nil)
-        }
-    }
     
+    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+        }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
+            picker.dismiss(animated: true, completion: nil)
         }
     }
+    
 }
 

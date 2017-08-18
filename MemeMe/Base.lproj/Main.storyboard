@@ -6,7 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,9 +32,9 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="Maf-7r-OPg">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R8u-8z-zfk">
-                                            <rect key="frame" x="59" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="59" y="7" width="54" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
+                                            <state key="normal" title="Camera"/>
                                         </button>
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="ujf-5g-hu1"/>
@@ -42,29 +42,55 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-mJ-p6K">
-                                <rect key="frame" x="67" y="236" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-mJ-p6K">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-Tc-C9S">
+                                <rect key="frame" x="16" y="499" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Yia-Tc-C9S" secondAttribute="height" multiplier="343:30" id="imo-Rf-fD1"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-fD-1GR">
+                                <rect key="frame" x="16" y="85" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pdz-fD-1GR" secondAttribute="height" multiplier="343:30" id="08Y-Xn-CcA"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PkQ-aQ-ZQ2"/>
-                            <constraint firstItem="VDI-mJ-p6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="VQC-go-g2a"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9T7-Zg-Ych" secondAttribute="bottom" id="aqU-pP-vqh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VDI-mJ-p6K" secondAttribute="trailing" constant="52" id="ata-Vf-W9g"/>
-                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="top" secondItem="VDI-mJ-p6K" secondAttribute="bottom" constant="259" id="ctA-eP-FQV"/>
-                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="top" secondItem="VDI-mJ-p6K" secondAttribute="bottom" constant="259" id="fFU-pg-VGh"/>
-                            <constraint firstItem="VDI-mJ-p6K" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="216" id="qBb-al-Ctp"/>
-                            <constraint firstAttribute="trailing" secondItem="9T7-Zg-Ych" secondAttribute="trailing" id="vdh-27-a6f"/>
+                            <constraint firstItem="VDI-mJ-p6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Ba-h2-zxO"/>
+                            <constraint firstItem="VDI-mJ-p6K" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="71c-SI-jlH"/>
+                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="top" secondItem="Yia-Tc-C9S" secondAttribute="bottom" constant="94" id="8Z2-Kc-Avg"/>
+                            <constraint firstAttribute="trailing" secondItem="VDI-mJ-p6K" secondAttribute="trailing" id="AOg-Hu-TlG"/>
+                            <constraint firstItem="pdz-fD-1GR" firstAttribute="centerX" secondItem="9T7-Zg-Ych" secondAttribute="centerX" id="Uaf-NJ-rOD"/>
+                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="V3u-Hx-5LH"/>
+                            <constraint firstAttribute="trailing" secondItem="9T7-Zg-Ych" secondAttribute="trailing" id="ZiJ-0Y-BFg"/>
+                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="top" secondItem="VDI-mJ-p6K" secondAttribute="bottom" id="mEd-jl-8jG"/>
+                            <constraint firstItem="pdz-fD-1GR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="65" id="miC-QX-pPR"/>
+                            <constraint firstItem="pdz-fD-1GR" firstAttribute="centerX" secondItem="Yia-Tc-C9S" secondAttribute="centerX" id="oEV-gO-NFX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9T7-Zg-Ych" secondAttribute="bottom" id="tdc-bD-Bif"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="Maf-7r-OPg" id="ax8-Sn-5qJ"/>
                         <outlet property="imageView" destination="VDI-mJ-p6K" id="A4n-Nx-OGK"/>
+                        <outlet property="lowerTextField" destination="Yia-Tc-C9S" id="p54-bU-Beo"/>
+                        <outlet property="upperTextField" destination="pdz-fD-1GR" id="lw2-eK-DrE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
     </scenes>
 </document>
