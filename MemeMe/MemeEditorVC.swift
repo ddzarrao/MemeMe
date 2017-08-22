@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorVC.swift
 //  MemeMe
 //
 //  Created by Donald Zarraonandia on 8/13/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
@@ -19,15 +19,21 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var navigationBar: UINavigationBar!
     
     
-    let memeTextAttributes:[String:Any] = [
-        NSStrokeColorAttributeName: UIColor.black,
-        NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: 5.0]
+    func customizeTextField(textField: UITextField, defaultText: String) {
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName: -5
+        ]
+        
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.text = defaultText
+        textField.textAlignment = .center
+    }
     
     func generateMemedImage() -> UIImage {
         
-       
         toolBar.isHidden = true
         navigationBar.isHidden = true
         
@@ -36,7 +42,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
         
         toolBar.isHidden = false
         navigationBar.isHidden = false
@@ -63,17 +68,15 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        upperTextField.defaultTextAttributes = memeTextAttributes
-        upperTextField.textAlignment = .center
-        lowerTextField.defaultTextAttributes = memeTextAttributes
-        lowerTextField.textAlignment = .center
+        customizeTextField(textField: lowerTextField, defaultText: "Enter Text")
+        customizeTextField(textField: upperTextField, defaultText: "Enter Text")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,7 +91,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
-
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         let imagePicker = UIImagePickerController()
@@ -110,12 +112,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return true
     }
     
-    
-    
-    
     func keyboardWillShow(_ notification:Notification) {
         
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        view.frame.origin.y = -getKeyboardHeight(notification)
     }
     
     func keyboardWillHide(_ notification:Notification){

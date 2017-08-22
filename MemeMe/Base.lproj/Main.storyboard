@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MemeEditorVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="MemeEditorVC" customClass="MemeEditorVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -46,7 +46,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Share"/>
                                             <connections>
-                                                <action selector="shareMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yiB-zC-gHp"/>
+                                                <action selector="shareMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EfP-JQ-Cko"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -81,13 +81,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="WOb-6p-mDl"/>
                                 </connections>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVF-pu-VkF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="uP5-24-S0P"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -108,8 +101,6 @@
                         <outlet property="cameraButton" destination="Maf-7r-OPg" id="ax8-Sn-5qJ"/>
                         <outlet property="imageView" destination="VDI-mJ-p6K" id="A4n-Nx-OGK"/>
                         <outlet property="lowerTextField" destination="Yia-Tc-C9S" id="p54-bU-Beo"/>
-                        <outlet property="navigationBar" destination="FVF-pu-VkF" id="sed-gf-vdi"/>
-                        <outlet property="shareMeme" destination="RjY-Of-ZDt" id="LE6-Xd-a9a"/>
                         <outlet property="toolBar" destination="9T7-Zg-Ych" id="oBe-Oe-AFv"/>
                         <outlet property="upperTextField" destination="pdz-fD-1GR" id="lw2-eK-DrE"/>
                     </connections>

@@ -1,5 +1,5 @@
 //
-//  ImageStruct.swift
+//  Meme.swift
 //  MemeMe
 //
 //  Created by Donald Zarraonandia on 8/18/17.
