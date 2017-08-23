@@ -30,26 +30,12 @@
                                             <action selector="pickAnImage:" destination="BYZ-38-t0r" id="byT-K5-xAi"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" id="Maf-7r-OPg">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R8u-8z-zfk">
-                                            <rect key="frame" x="59" y="7" width="54" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Camera"/>
-                                        </button>
+                                    <barButtonItem style="plain" systemItem="camera" id="Maf-7r-OPg">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="ujf-5g-hu1"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" id="RjY-Of-ZDt">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lrz-YO-ebu">
-                                            <rect key="frame" x="123" y="7" width="40" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Share"/>
-                                            <connections>
-                                                <action selector="shareMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EfP-JQ-Cko"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="action" id="RjY-Of-ZDt"/>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-mJ-p6K">

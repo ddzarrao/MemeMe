@@ -84,23 +84,26 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         unsubscribeFromKeyboardNotifications()
     }
     
-
-    @IBAction func pickAnImage(_ sender: Any) {
+    func imagePickHelp(whereFrom: UIImagePickerControllerSourceType){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = whereFrom
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
+    @IBAction func pickAnImage(_ sender: Any) {
+        imagePickHelp(whereFrom: .photoLibrary)
+    }
+    
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        imagePickHelp(whereFrom: .camera)
         }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
+            imageView.contentMode = .scaleAspectFit
             picker.dismiss(animated: true, completion: nil)
         }
     }
@@ -113,8 +116,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func keyboardWillShow(_ notification:Notification) {
-        
+        if lowerTextField.isEditing == true{
         view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     func keyboardWillHide(_ notification:Notification){
@@ -130,10 +134,21 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
    
     @IBAction func shareMeme(_ sender: Any) {
-        func save() {
-            // Create the meme
-            let meme = Meme(topText: upperTextField.text!, bottomText: lowerTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+        var memedImage = generateMemedImage()
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        // setting up dismissal of the activity view once the meme is successfully shared:
+        activityViewController.completionWithItemsHandler = {
+            (activity, success, items, error) in
+            if (success) {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
+        present(activityViewController, animated: true, completion: save)
+        }
+        
+    func save() {
+        // Create the meme
+        let meme = Meme(topText: upperTextField.text!, bottomText: lowerTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
     }
     
 }
