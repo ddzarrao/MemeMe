@@ -32,10 +32,22 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         textField.textAlignment = .center
     }
     
+    func toolBarAndNavBar(){
+        if toolBar.isHidden == true{
+            toolBar.isHidden = false
+        } else {
+            toolBar.isHidden = true
+        }
+        if navigationBar.isHidden == true{
+            navigationBar.isHidden = false
+        } else {
+            navigationBar.isHidden = true
+        }
+    }
+    
     func generateMemedImage() -> UIImage {
         
-        toolBar.isHidden = true
-        navigationBar.isHidden = true
+        toolBarAndNavBar()
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -43,8 +55,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        toolBar.isHidden = false
-        navigationBar.isHidden = false
+        toolBarAndNavBar()
         
         return memedImage
     }
@@ -141,6 +152,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             (activity, success, items, error) in
             if (success) {
                 self.dismiss(animated: true, completion: nil)
+                self.save()
             }
         }
         present(activityViewController, animated: true, completion: save)

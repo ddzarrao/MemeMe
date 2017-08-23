@@ -6,7 +6,7 @@
 //  Copyright © 2017 Donald Zarraonandia. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 struct Meme {

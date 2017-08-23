@@ -35,7 +35,11 @@
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="ujf-5g-hu1"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="action" id="RjY-Of-ZDt"/>
+                                    <barButtonItem style="plain" systemItem="action" id="RjY-Of-ZDt">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="bA5-CN-pw4"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-mJ-p6K">
