@@ -16,7 +16,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var upperTextField: UITextField!
     @IBOutlet weak var lowerTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var pickButton: UIBarButtonItem!
+    @IBOutlet weak var actionButton: UIBarButtonItem!
+    
+    
     
     
     func customizeTextField(textField: UITextField, defaultText: String) {
@@ -37,11 +40,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             toolBar.isHidden = false
         } else {
             toolBar.isHidden = true
-        }
-        if navigationBar.isHidden == true{
-            navigationBar.isHidden = false
-        } else {
-            navigationBar.isHidden = true
         }
     }
     
@@ -79,6 +77,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        actionButton.isEnabled = imageView.image != nil
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
     }
@@ -102,14 +101,22 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    
-    @IBAction func pickAnImage(_ sender: Any) {
-        imagePickHelp(whereFrom: .photoLibrary)
-    }
-    
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        imagePickHelp(whereFrom: .camera)
+   /* func actionButtonSwitch() {
+        if imageView.image == nil {
+            actionButton.isEnabled = false
+        }else{
+            actionButton.isEnabled = true
         }
+    }*/
+    
+    @IBAction func pickAnImage(_ sender: UIBarButtonItem) {
+        let myTag = sender.tag
+        if myTag == 1 {
+            imagePickHelp(whereFrom: .photoLibrary)
+        } else {
+            imagePickHelp(whereFrom: .camera)
+        }
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -133,7 +140,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func keyboardWillHide(_ notification:Notification){
-        
         view.frame.origin.y = 0
     }
     

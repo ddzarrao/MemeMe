@@ -25,14 +25,14 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9T7-Zg-Ych">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="Jo9-Ct-08E">
+                                    <barButtonItem tag="1" title="Pick" id="Jo9-Ct-08E">
                                         <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="byT-K5-xAi"/>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="PwZ-Vd-qXd"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="camera" id="Maf-7r-OPg">
+                                    <barButtonItem tag="2" style="plain" systemItem="camera" id="Maf-7r-OPg">
                                         <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="ujf-5g-hu1"/>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="NmC-qH-h3z"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="action" id="RjY-Of-ZDt">
@@ -46,18 +46,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-Tc-C9S">
-                                <rect key="frame" x="90.5" y="512" width="194" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Yia-Tc-C9S" secondAttribute="height" multiplier="343:30" id="imo-Rf-fD1"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Qqv-ZX-dV9"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Here" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-fD-1GR">
                                 <rect key="frame" x="90.5" y="85" width="194" height="17"/>
                                 <constraints>
@@ -71,16 +59,28 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="WOb-6p-mDl"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-Tc-C9S">
+                                <rect key="frame" x="90" y="434" width="194" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Yia-Tc-C9S" secondAttribute="height" multiplier="343:30" id="imo-Rf-fD1"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Qqv-ZX-dV9"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VDI-mJ-p6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Ba-h2-zxO"/>
                             <constraint firstItem="VDI-mJ-p6K" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="71c-SI-jlH"/>
-                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="top" secondItem="Yia-Tc-C9S" secondAttribute="bottom" constant="94" id="8Z2-Kc-Avg"/>
                             <constraint firstAttribute="trailing" secondItem="VDI-mJ-p6K" secondAttribute="trailing" id="AOg-Hu-TlG"/>
                             <constraint firstItem="pdz-fD-1GR" firstAttribute="centerX" secondItem="9T7-Zg-Ych" secondAttribute="centerX" id="Uaf-NJ-rOD"/>
                             <constraint firstItem="9T7-Zg-Ych" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="V3u-Hx-5LH"/>
                             <constraint firstAttribute="trailing" secondItem="9T7-Zg-Ych" secondAttribute="trailing" id="ZiJ-0Y-BFg"/>
+                            <constraint firstItem="9T7-Zg-Ych" firstAttribute="top" secondItem="Yia-Tc-C9S" secondAttribute="bottom" constant="172" id="gmh-86-0FX"/>
                             <constraint firstItem="9T7-Zg-Ych" firstAttribute="top" secondItem="VDI-mJ-p6K" secondAttribute="bottom" id="mEd-jl-8jG"/>
                             <constraint firstItem="pdz-fD-1GR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="65" id="miC-QX-pPR"/>
                             <constraint firstItem="pdz-fD-1GR" firstAttribute="centerX" secondItem="Yia-Tc-C9S" secondAttribute="centerX" id="oEV-gO-NFX"/>
@@ -88,9 +88,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="RjY-Of-ZDt" id="wP9-Or-9Hm"/>
                         <outlet property="cameraButton" destination="Maf-7r-OPg" id="ax8-Sn-5qJ"/>
                         <outlet property="imageView" destination="VDI-mJ-p6K" id="A4n-Nx-OGK"/>
                         <outlet property="lowerTextField" destination="Yia-Tc-C9S" id="p54-bU-Beo"/>
+                        <outlet property="pickButton" destination="Jo9-Ct-08E" id="kiF-cu-6G2"/>
                         <outlet property="toolBar" destination="9T7-Zg-Ych" id="oBe-Oe-AFv"/>
                         <outlet property="upperTextField" destination="pdz-fD-1GR" id="lw2-eK-DrE"/>
                     </connections>
